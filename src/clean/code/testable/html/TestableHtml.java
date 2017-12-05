@@ -6,17 +6,17 @@ import fitnesse.wiki.*;
 public class TestableHtml {
 
     public String testableHtml(PageData pageData, boolean includeSuiteSetup) throws Exception {
-        return new TestableHtmlMaker(pageData, includeSuiteSetup).invoke();
+        return new SetupTeardownSurrounder(pageData, includeSuiteSetup).surround();
     }
 
-    private class TestableHtmlMaker {
+    private class SetupTeardownSurrounder {
         private PageData pageData;
         private boolean includeSuiteSetup;
         private WikiPage wikiPage;
         private String content;
         private PageCrawler crawler;
 
-        public TestableHtmlMaker(PageData pageData, boolean includeSuiteSetup) {
+        public SetupTeardownSurrounder(PageData pageData, boolean includeSuiteSetup) {
             this.pageData = pageData;
             this.includeSuiteSetup = includeSuiteSetup;
             this.wikiPage = pageData.getWikiPage();
@@ -24,7 +24,7 @@ public class TestableHtml {
             this.crawler = wikiPage.getPageCrawler();
         }
 
-        public String invoke() throws Exception {
+        public String surround() throws Exception {
             if (isTestPage()) {
                 surroundPageWithSetupsAndTeardowns();
             }
