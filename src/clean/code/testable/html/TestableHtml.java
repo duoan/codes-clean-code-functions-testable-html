@@ -27,40 +27,43 @@ public class TestableHtml {
         public String invoke() throws Exception {
 
             if (pageData.hasAttribute("Test")) {
-                String mode = "setup";
-                if (includeSuiteSetup) {
-                    includeIfInherited(mode,  SuiteResponder.SUITE_SETUP_NAME);
-                }
-                includeIfInherited(mode, "SetUp");
+                includeSetups();
             }
 
             buffer.append(pageData.getContent());
             if (pageData.hasAttribute("Test")) {
-                WikiPage teardown = PageCrawlerImpl.getInheritedPage("TearDown", wikiPage);
-                String mode = "teardown";
-                if (teardown != null) {
-                    includePage(mode, teardown);
-                }
-                if (includeSuiteSetup) {
-                    includeIfInherited(mode, SuiteResponder.SUITE_TEARDOWN_NAME);
-                }
+                includeTearDowns();
             }
 
             pageData.setContent(buffer.toString());
             return pageData.getHtml();
         }
 
-        private void includeIfInherited(String mode, String pageName) throws Exception {
-            WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(pageName, wikiPage);
-            if (suiteSetup != null) {
-                includePage(mode, suiteSetup);
+        private void includeTearDowns() throws Exception {
+            includeIfInherited("teardown", "TearDown");
+            if (includeSuiteSetup) {
+                includeIfInherited("teardown", SuiteResponder.SUITE_TEARDOWN_NAME);
             }
         }
 
-        private void includePage(String mode, WikiPage suiteSetup) throws Exception {
-            WikiPagePath pagePath = crawler.getFullPath(suiteSetup);
+        private void includeSetups() throws Exception {
+            if (includeSuiteSetup) {
+                includeIfInherited("setup", SuiteResponder.SUITE_SETUP_NAME);
+            }
+            includeIfInherited("setup", "SetUp");
+        }
+
+        private void includeIfInherited(String mode, String pageName) throws Exception {
+            WikiPage page = PageCrawlerImpl.getInheritedPage(pageName, wikiPage);
+            if (page != null) {
+                includePage(mode, page);
+            }
+        }
+
+        private void includePage(String mode, WikiPage page) throws Exception {
+            WikiPagePath pagePath = crawler.getFullPath(page);
             String pagePathName = PathParser.render(pagePath);
-            buffer.append(String.format("!include -%s .%s\n",mode,pagePathName));
+            buffer.append(String.format("!include -%s .%s\n", mode, pagePathName));
         }
     }
 }
