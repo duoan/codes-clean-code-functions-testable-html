@@ -78,3 +78,8 @@ lines 1-12...skipping...
 * 091dd74 <anduo> (54 minutes ago)
           init with no-refactored code
 ```
+The full version of the refactor steps can find at [history](https://github.com/classtag/clean_code_functions_testable_html/commits/master/src/clean/code/testable/html/TestableHtml.java)
+
+## Thanks
+
+More rules about clean code - functions can find at [clean-code-episode-3](https://cleancoders.com/episode/clean-code-episode-3/show)
