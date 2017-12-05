@@ -33,7 +33,26 @@ step2: import the repo into your [IDEA](https://www.jetbrains.com/idea/?fromMenu
 then add jars in `lib` folder into classpath.
 
 ## Refactor History
-run command ```git hist```
+
+- [init with no-refactored code](https://github.com/classtag/clean_code_functions_testable_html/commit/091dd74c80909a60f451114bdac14d5290b008c6#diff-2852df592e38c08a07afcc7e41838082)
+- [extract the function to a class](https://github.com/classtag/clean_code_functions_testable_html/commit/d1b8e508460dd06849ccf4c51931b4ba843ac857#diff-2852df592e38c08a07afcc7e41838082)
+- [extract the duplicated get crawler logic into a class field , initial it at construct method](https://github.com/classtag/clean_code_functions_testable_html/commit/5ce25d545345b4a07306dc712e65bcabbcd9003d#diff-2852df592e38c08a07afcc7e41838082)
+- [extract mode variable](https://github.com/classtag/clean_code_functions_testable_html/commit/436fbd74af02a5b9637550ce04142d85581aa7ba#diff-2852df592e38c08a07afcc7e41838082)
+- [extract includePage function for 4 same block](https://github.com/classtag/clean_code_functions_testable_html/commit/e1281124a5f822b3db61a9b4c910903cb5641d4d#diff-2852df592e38c08a07afcc7e41838082)
+- [use String.format replace String + String](https://github.com/classtag/clean_code_functions_testable_html/commit/9720018e0163b4c6932d9a962c1ede42866132ac#diff-2852df592e38c08a07afcc7e41838082)
+- [extract includeIfInherited function](https://github.com/classtag/clean_code_functions_testable_html/commit/26370b9667640a895463c38fd078e4416ed0bda2#diff-2852df592e38c08a07afcc7e41838082)
+- [extract includeSetups and includeTearDowns functions](https://github.com/classtag/clean_code_functions_testable_html/commit/78d7bf63c49158f242348852b945447da2183079#diff-2852df592e38c08a07afcc7e41838082)
+- [cut the StringBuffer with funcitons return string](https://github.com/classtag/clean_code_functions_testable_html/commit/29d061ccde64ae8e1f0879693fb0a8e3d16e9597#diff-2852df592e38c08a07afcc7e41838082)
+- [merge the if block into one together](https://github.com/classtag/clean_code_functions_testable_html/commit/93d53e2f23faad13933921e642c0cafb104269ae#diff-2852df592e38c08a07afcc7e41838082)
+- [extract isTestPage function for more readable code](https://github.com/classtag/clean_code_functions_testable_html/commit/a9aa5f37ab79720d1d9338447dc3f5403b178995#diff-2852df592e38c08a07afcc7e41838082)
+- [extract surroundPageWithSetupsAndTeardowns functions](https://github.com/classtag/clean_code_functions_testable_html/commit/3cf27c4c653d97a5336f5e835c9f6cd9263cf332#diff-2852df592e38c08a07afcc7e41838082)
+- [rename the class name and invoke name more meaningful](https://github.com/classtag/clean_code_functions_testable_html/commit/0a59fcd4db51258f15683369580c80459871e3cd#diff-2852df592e38c08a07afcc7e41838082)
+
+These bellow refactor history shows how to refactor a big fucntion into very small functions.
+It makes sure each function just do one thing, and simple, very nice for reading.
+
+
+run command ```git hist``` to see the refactor history.
 ```bash
 * 0a59fcd <anduo> (HEAD -> master) (13 seconds ago)
 |         rename the class name and invoke name more meaningful
@@ -78,6 +97,7 @@ lines 1-12...skipping...
 * 091dd74 <anduo> (54 minutes ago)
           init with no-refactored code
 ```
+
 The full version of the refactor steps can find at [history](https://github.com/classtag/clean_code_functions_testable_html/commits/master/src/clean/code/testable/html/TestableHtml.java)
 
 ## Thanks
