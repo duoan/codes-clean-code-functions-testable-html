@@ -25,17 +25,12 @@ public class TestableHtml {
         }
 
         public String invoke() throws Exception {
-
             if (pageData.hasAttribute("Test")) {
                 content += includeSetups();
-            }
-
-            content += pageData.getContent();
-            if (pageData.hasAttribute("Test")) {
+                content += pageData.getContent();
                 content += includeTearDowns();
+                pageData.setContent(content);
             }
-
-            pageData.setContent(content);
             return pageData.getHtml();
         }
 
