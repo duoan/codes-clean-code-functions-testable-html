@@ -12,16 +12,17 @@ public class TestableHtml {
     private class TestableHtmlMaker {
         private PageData pageData;
         private boolean includeSuiteSetup;
+        private WikiPage wikiPage;
+        private StringBuffer buffer;
 
         public TestableHtmlMaker(PageData pageData, boolean includeSuiteSetup) {
             this.pageData = pageData;
             this.includeSuiteSetup = includeSuiteSetup;
+            this.wikiPage = pageData.getWikiPage();
+            this.buffer = new StringBuffer();
         }
 
         public String invoke() throws Exception {
-            WikiPage wikiPage = pageData.getWikiPage();
-            StringBuffer buffer = new StringBuffer();
-
             if (pageData.hasAttribute("Test")) {
                 if (includeSuiteSetup) {
                     WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME, wikiPage);
