@@ -29,15 +29,9 @@ public class TestableHtml {
             if (pageData.hasAttribute("Test")) {
                 String mode = "setup";
                 if (includeSuiteSetup) {
-                    WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_SETUP_NAME, wikiPage);
-                    if (suiteSetup != null) {
-                        includePage(mode, suiteSetup);
-                    }
+                    includeIfInherited(mode,  SuiteResponder.SUITE_SETUP_NAME);
                 }
-                WikiPage setup = PageCrawlerImpl.getInheritedPage("SetUp", wikiPage);
-                if (setup != null) {
-                    includePage(mode, setup);
-                }
+                includeIfInherited(mode, "SetUp");
             }
 
             buffer.append(pageData.getContent());
@@ -48,15 +42,19 @@ public class TestableHtml {
                     includePage(mode, teardown);
                 }
                 if (includeSuiteSetup) {
-                    WikiPage suiteTeardown = PageCrawlerImpl.getInheritedPage(SuiteResponder.SUITE_TEARDOWN_NAME, wikiPage);
-                    if (suiteTeardown != null) {
-                        includePage(mode, suiteTeardown);
-                    }
+                    includeIfInherited(mode, SuiteResponder.SUITE_TEARDOWN_NAME);
                 }
             }
 
             pageData.setContent(buffer.toString());
             return pageData.getHtml();
+        }
+
+        private void includeIfInherited(String mode, String pageName) throws Exception {
+            WikiPage suiteSetup = PageCrawlerImpl.getInheritedPage(pageName, wikiPage);
+            if (suiteSetup != null) {
+                includePage(mode, suiteSetup);
+            }
         }
 
         private void includePage(String mode, WikiPage suiteSetup) throws Exception {
