@@ -62,7 +62,7 @@ public class TestableHtml {
         private void includePage(String mode, WikiPage suiteSetup) throws Exception {
             WikiPagePath pagePath = crawler.getFullPath(suiteSetup);
             String pagePathName = PathParser.render(pagePath);
-            buffer.append("!include -" + mode + " .").append(pagePathName).append("\n");
+            buffer.append(String.format("!include -%s .%s\n",mode,pagePathName));
         }
     }
 }
