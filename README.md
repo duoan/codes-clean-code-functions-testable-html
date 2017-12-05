@@ -32,4 +32,49 @@ git clone https://github.com/classtag/clean_code_functions_testable_html.git
 step2: import the repo into your [IDEA](https://www.jetbrains.com/idea/?fromMenu),
 then add jars in `lib` folder into classpath.
 
-##
+## Refactor History
+run command ```git hist```
+```bash
+* 0a59fcd <anduo> (HEAD -> master) (13 seconds ago)
+|         rename the class name and invoke name more meaningful
+* 3cf27c4 <anduo> (2 minutes ago)
+|         extract surroundPageWithSetupsAndTeardowns functions
+* a9aa5f3 <anduo> (4 minutes ago)
+|         extract isTestPage function for more readable code
+* 93d53e2 <anduo> (5 minutes ago)
+|         merge the if block into one together
+* 29d061c <anduo> (6 minutes ago)
+|         cut the stringbuffer with funcitons return string
+* 78d7bf6 <anduo> (14 minutes ago)
+|         extract includeSetups and includeTearDowns functions
+lines 1-12...skipping...
+* 0a59fcd <anduo> (HEAD -> master) (13 seconds ago)
+|         rename the class name and invoke name more meaningful
+* 3cf27c4 <anduo> (2 minutes ago)
+|         extract surroundPageWithSetupsAndTeardowns functions
+* a9aa5f3 <anduo> (4 minutes ago)
+|         extract isTestPage function for more readable code
+* 93d53e2 <anduo> (5 minutes ago)
+|         merge the if block into one together
+* 29d061c <anduo> (6 minutes ago)
+|         cut the stringbuffer with funcitons return string
+* 78d7bf6 <anduo> (14 minutes ago)
+|         extract includeSetups and includeTearDowns functions
+* 26370b9 <anduo> (21 minutes ago)
+|         extract includeIfInherited function
+* 9720018 <anduo> (24 minutes ago)
+|         use String.format replace String + String
+* e128112 <anduo> (25 minutes ago)
+|         extract includePage function for 4 same block
+* 436fbd7 <anduo> (27 minutes ago)
+|         extract mode variable
+* 606332f <anduo> (32 minutes ago)
+|         extract the duplicated get crawler logic into a class field , initial it
+|         at construct method
+* 5ce25d5 <anduo> (35 minutes ago)
+|         extract common variable into construct method
+* d1b8e50 <anduo> (49 minutes ago)
+|         extract the function to a class
+* 091dd74 <anduo> (54 minutes ago)
+          init with no-refactored code
+```
