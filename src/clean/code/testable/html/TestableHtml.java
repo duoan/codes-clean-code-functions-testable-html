@@ -26,12 +26,16 @@ public class TestableHtml {
 
         public String invoke() throws Exception {
             if (isTestPage()) {
-                content += includeSetups();
-                content += pageData.getContent();
-                content += includeTearDowns();
-                pageData.setContent(content);
+                surroundPageWithSetupsAndTeardowns();
             }
             return pageData.getHtml();
+        }
+
+        private void surroundPageWithSetupsAndTeardowns() throws Exception {
+            content += includeSetups();
+            content += pageData.getContent();
+            content += includeTearDowns();
+            pageData.setContent(content);
         }
 
         private boolean isTestPage() throws Exception {
